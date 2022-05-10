@@ -7,10 +7,15 @@ import java.util.Date;
  * 2022-05-10
  **/
 public class users {
+    /*用户id*/
     private String user_id;
+    /*用户实名*/
     private String user_name;
+    /*账号名称*/
     private String login_name;
+    /*登录密码*/
     private String password;
+    /*创建时间*/
     private Date creat_time;
 
     public String getUser_id() {

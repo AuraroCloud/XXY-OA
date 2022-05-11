@@ -13,7 +13,7 @@ public interface userMapper {
     int   deleteUser();
     //查询一个用户
     users selectUser();
-    //修改用户的信息
+    //修改用 户的信息
     int updateUser();
 
 

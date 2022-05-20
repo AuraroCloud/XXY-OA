@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xxy.oausers.mapper.usersMapper">
+<sql id="Susers">
+select user_id,user_name,login_name, String password
+from  sys_user
+</sql>
+<resultMap id="Users" type="com.xxy.oausers.pojo.users">
+<id property="userId" column="user_id"/>
+    <id property="userName" column="user_name"/>
+    <id property="loginName" column="login_name"/>
+    <id property="password" column="password"/>
+    <id property="creatTime" column="creat_time"/>
+
+</resultMap>
+
+<!--查询用户-->
+    <select id="selectUser" resultMap="Users">
+<include refid="Susers"></include>
+    </select>
+
+<insert id="insertUser"  >
+insert into sys_user(user_id,user_name,login_name,password,creat_time)
+values(#{userId},#{userName},#{loginName},#{password},#{creatTime})
+</insert>
+    <delete id="deleteUser">
+delete from sys_user where user_id=#{userId}
+    </delete>
+
+<update id="updateUser">
+    update sys_user
+    <set>
+        <if test="userId != null and userId != ''">user_Id = #{userId},</if>
+        <if test="userName != null and postName != ''">user_name = #{UserName},</if>
+        <if test="loginName!= null and postSort != ''">login_name = #{loginName},</if>
+        <if test="password != null and status != ''">status = #{password},</if>
+        <if test="creatTime != null">remark = #{creatTime},</if>
+    </set>
+    where user_id=#{userId}
+</update>
+
+
+</mapper>
+
+
